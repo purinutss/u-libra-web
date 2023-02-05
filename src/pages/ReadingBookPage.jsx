@@ -1,12 +1,12 @@
 import React from "react";
 import Header from "../layouts/Header";
-import ProfilePart from "../layouts/ProfilePart";
+import ReadBookPart from "../layouts/ReadBookPart";
 
-export default function ProfilePage() {
+export default function ReadingBookPage() {
   return (
     <div>
       <Header />
-      <ProfilePart />
+      <ReadBookPart />
     </div>
   );
 }

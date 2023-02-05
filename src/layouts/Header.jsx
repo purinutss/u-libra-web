@@ -6,7 +6,7 @@ export default function Header() {
     <>
       <div className="mb-5">
         <div className="flex justify-between text-lg shadow-lg p-3">
-          <div className="text-emerald-400 font-black text-4xl text-center ml-10 ">
+          <div className="text-emerald-400 font-black text-4xl text-center ml-10  ">
             <h1>U-LIBRA</h1>
           </div>
           <div className="flex">

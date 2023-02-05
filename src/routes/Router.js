@@ -5,6 +5,9 @@ import BookshelfPage from "../pages/BookshelfPage";
 import SummaryBookPage from "../pages/SummaryBookPage";
 import ProfilePage from "../pages/ProfilePage";
 import Modal from "../components/Modal";
+import ReadingBookPage from "../pages/ReadingBookPage";
+import RegisterForm from "../features/auth/RegisterForm";
+import LoginContainer from "../features/auth/LoginContainer";
 import LoginForm from "../features/auth/LoginForm";
 
 const router = createBrowserRouter([
@@ -25,11 +28,15 @@ const router = createBrowserRouter([
     element: <SummaryBookPage />,
   },
   {
+    path: "/read/:bookId",
+    element: <ReadingBookPage />,
+  },
+  {
     path: "/profile/:userId",
     element: <ProfilePage />,
   },
   {
-    path: "/login",
+    path: "/blank",
     element: <LoginForm />,
   },
 ]);

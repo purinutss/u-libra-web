@@ -1,20 +1,20 @@
 import React, { useState } from "react";
-import LoginForm from "./LoginForm";
 import Modal from "../../components/Modal";
+import RegisterForm from "./RegisterForm";
 
-export default function LoginContainer() {
+export default function RegisterContainer() {
   const [open, setOpen] = useState(false);
   return (
     <div>
-      <button
+      <h1
         type="button"
-        className="ml-5 rounded-xl bg-emerald-200 p-1.5 w-24 font-bold"
+        className="mt-2 hover:text-blue-700 hover:underline"
         onClick={() => setOpen(true)}
       >
-        Login
-      </button>
+        create new account
+      </h1>
       <Modal open={open} onClose={() => setOpen(false)}>
-        <LoginForm onClose={() => setOpen(false)} />
+        <RegisterForm onClose={() => setOpen(false)} />
       </Modal>
     </div>
   );
