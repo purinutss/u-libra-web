@@ -4,10 +4,7 @@ import HomePage from "../pages/HomePage";
 import BookshelfPage from "../pages/BookshelfPage";
 import SummaryBookPage from "../pages/SummaryBookPage";
 import ProfilePage from "../pages/ProfilePage";
-import Modal from "../components/Modal";
 import ReadingBookPage from "../pages/ReadingBookPage";
-import RegisterForm from "../features/auth/RegisterForm";
-import LoginContainer from "../features/auth/LoginContainer";
 import LoginForm from "../features/auth/LoginForm";
 
 const router = createBrowserRouter([
@@ -35,10 +32,10 @@ const router = createBrowserRouter([
     path: "/profile/:userId",
     element: <ProfilePage />,
   },
-  {
-    path: "/blank",
-    element: <LoginForm />,
-  },
+  // {
+  //   path: "/blank",
+  //   element: <LoginForm />,
+  // },
 ]);
 
 export default function Router() {
