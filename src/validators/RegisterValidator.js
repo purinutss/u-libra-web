@@ -19,10 +19,10 @@ const registerSchema = Joi.object({
     .email({ tlds: false })
     .required()
     .messages({ "string.empty": "email is required" }),
-  password: Joi.string().alphanum().min(8).required().messages({
+  password: Joi.string().alphanum().min(6).required().messages({
     "string.empty": "password is required",
     "string.alphanum": "password must contain number or alphabet",
-    "string.min": "password must have at least 8 characters",
+    "string.min": "password must have at least 6 characters",
   }),
   confirmPassword: Joi.string().valid(Joi.ref("password")).required().messages({
     "any.only": "please match with the password",

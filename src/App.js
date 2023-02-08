@@ -1,11 +1,16 @@
+import { ToastContainer } from "react-toastify";
+import Spinner from "./components/Spinner";
+import useLoading from "./hooks/useLoading";
+
 import Router from "./routes/Router";
 
-function App() {
+export default function App() {
+  const { loading } = useLoading();
   return (
-    <div className="">
+    <>
+      {loading && <Spinner />}
       <Router />
-    </div>
+      <ToastContainer autoClose="1000" theme="light" position="bottom-center" />
+    </>
   );
 }
-
-export default App;

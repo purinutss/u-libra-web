@@ -1,6 +1,9 @@
 import React, { useState } from "react";
+import { toast } from "react-toastify";
 import Input from "../../components/Input";
 import validateRegister from "../../validators/RegisterValidator";
+import * as authApi from "../../apis/auth-api";
+import useLoading from "../../hooks/useLoading";
 
 const initialInput = {
   firstName: "",
@@ -10,9 +13,11 @@ const initialInput = {
   password: "",
   confirmPassword: "",
 };
-export default function RegisterForm() {
+export default function RegisterForm({ onClose }) {
   const [input, setInput] = useState(initialInput);
   const [error, setError] = useState({});
+
+  const { startLoading, stopLoading } = useLoading();
 
   const handleChangeInput = (e) => {
     setInput({
@@ -21,14 +26,25 @@ export default function RegisterForm() {
     });
   };
 
-  const handleSubmitForm = (e) => {
-    e.preventDefault();
-    const result = validateRegister(input);
+  const handleSubmitForm = async (e) => {
+    try {
+      e.preventDefault();
+      const result = validateRegister(input);
 
-    if (result) {
-      setError(result);
-    } else {
-      setError({});
+      if (result) {
+        setError(result);
+      } else {
+        setError({});
+        startLoading();
+        await authApi.register(input);
+        setInput(initialInput);
+        onClose();
+        toast.success("register is successfully, login to continue");
+      }
+    } catch (err) {
+      toast.error(err?.response?.data?.message);
+    } finally {
+      stopLoading();
     }
   };
 
@@ -48,7 +64,7 @@ export default function RegisterForm() {
               <div className="flex gap-2">
                 <div className="mb-6">
                   <label
-                    for="firstName"
+                    htmlFor="firstName"
                     className="block mb-2 text-sm font-medium text-gray-900"
                   >
                     First Name
@@ -63,7 +79,7 @@ export default function RegisterForm() {
 
                 <div className="mb-6">
                   <label
-                    for="lastName"
+                    htmlFor="lastName"
                     className="block mb-2 text-sm font-medium text-gray-900"
                   >
                     Last Name
@@ -80,7 +96,7 @@ export default function RegisterForm() {
               <div className="flex gap-2">
                 <div className="mb-6">
                   <label
-                    for="telephone"
+                    htmlFor="telephone"
                     className="block mb-2 text-sm font-medium text-gray-900"
                   >
                     Telephone
@@ -94,7 +110,7 @@ export default function RegisterForm() {
                 </div>
                 <div className="mb-6">
                   <label
-                    for="email"
+                    htmlFor="email"
                     className="block mb-2 text-sm font-medium text-gray-900"
                   >
                     Email
@@ -112,7 +128,7 @@ export default function RegisterForm() {
               <div className="flex gap-2">
                 <div className="mb-6">
                   <label
-                    for="password"
+                    htmlFor="password"
                     className="block mb-2 text-sm font-medium text-gray-900"
                   >
                     Password
@@ -127,7 +143,7 @@ export default function RegisterForm() {
                 </div>
                 <div className="mb-6">
                   <label
-                    for="confirmPassword"
+                    htmlFor="confirmPassword"
                     className="block mb-2 text-sm font-medium text-gray-900 "
                   >
                     Confirm password
@@ -156,6 +172,7 @@ export default function RegisterForm() {
               <button
                 type="reset"
                 className="text-gray-900 bg-gray-300 hover:bg-gray-400 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-3xl text-sm px-5 py-2.5 text-center"
+                onClick={onClose}
               >
                 Cancel
               </button>
