@@ -1,9 +1,10 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 export default function SummaryBookPart() {
   return (
     <>
-      <div className="flex justify-evenly p-4">
+      <div className="flex justify-evenly mx-4 mt-4">
         <div className="flex w-full">
           <div>
             <img src="https://picsum.photos/400/600" alt="" />
@@ -21,12 +22,14 @@ export default function SummaryBookPart() {
                 </div>
               </div>
               <div className="grid items-center">
-                <button
-                  type="button"
-                  className=" rounded-xl bg-emerald-200 p-1.5 w-32 font-bold text-xl"
-                >
-                  Read
-                </button>
+                <Link to="/read/:bookId">
+                  <button
+                    type="button"
+                    className=" rounded-xl bg-emerald-200 p-1.5 w-32 font-bold text-xl"
+                  >
+                    Read
+                  </button>
+                </Link>
               </div>
             </div>
             <div className=" self-center mt-4">

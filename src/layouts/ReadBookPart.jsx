@@ -2,7 +2,7 @@ import React from "react";
 
 export default function ReadBookPart() {
   return (
-    <div className="p-7 w-3/4 m-auto border-double border-4 border-black rounded-3xl h-full">
+    <div className="p-7 w-3/4 m-auto border-double border-4 border-black rounded-3xl h-full my-5">
       <div className="flex justify-between">
         <div>
           <i

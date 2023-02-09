@@ -8,7 +8,7 @@ export default function RegisterContainer() {
     <div>
       <h1
         type="button"
-        className="mt-2 hover:text-blue-700 hover:underline"
+        className="mt-2 mb-3 hover:text-blue-700 hover:underline"
         onClick={() => setOpen(true)}
       >
         create new account

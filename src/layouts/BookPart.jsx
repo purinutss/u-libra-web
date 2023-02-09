@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 export default function BookPart() {
   return (
@@ -6,14 +7,16 @@ export default function BookPart() {
       <div>
         <div>
           <div className="">
-            <h1 className=" w-1/5 text-left font-bold text-2xl p-10 hover:text-blue-800 hover:underline cursor-pointer">
-              New Arrival
-            </h1>
+            <Link to="/category/:catId">
+              <h1 className=" w-1/5 text-left font-bold text-2xl p-10 hover:text-blue-800 hover:underline cursor-pointer">
+                New Arrival
+              </h1>
+            </Link>
           </div>
           <div className="flex justify-center gap-16">
-            <div>
+            <Link to="/summary/:bookId">
               <img src="https://picsum.photos/200/300" alt="" />
-            </div>
+            </Link>
             <div>
               <img src="https://picsum.photos/200/300" alt="" />
             </div>

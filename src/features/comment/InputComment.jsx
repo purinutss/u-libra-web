@@ -3,7 +3,7 @@ import React from "react";
 export default function InputComment() {
   return (
     <>
-      <div className="flex justify-center items-center mt-2">
+      <div className="flex justify-center items-center my-4">
         <div className="">
           <img
             src="https://picsum.photos/50/50"

@@ -3,7 +3,7 @@ import React from "react";
 export default function ShowComment() {
   return (
     <>
-      <div className="">
+      <div className="my-3">
         <div className="flex items-start p-2">
           <div className="items-center mx-4">
             <img
@@ -33,7 +33,7 @@ export default function ShowComment() {
           </div>
         </div>
       </div>
-      <hr />
+      <hr className="mx-3" />
     </>
   );
 }

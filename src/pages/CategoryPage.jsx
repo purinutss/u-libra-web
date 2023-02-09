@@ -4,13 +4,8 @@ import Header from "../layouts/Header";
 
 export default function CategoryPage() {
   return (
-    <>
-      <div>
-        <Header />
-      </div>
-      <div>
-        <BookPart />
-      </div>
-    </>
+    <div>
+      <BookPart />
+    </div>
   );
 }

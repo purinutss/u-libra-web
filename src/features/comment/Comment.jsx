@@ -8,7 +8,7 @@ export default function Comment() {
       <div className="mb-2">
         <h1 className="text-center text-3xl font-bold">Comment</h1>
       </div>
-      <hr className="" />
+      <hr className="mx-3" />
       <ShowComment />
       <ShowComment />
       <InputComment />
