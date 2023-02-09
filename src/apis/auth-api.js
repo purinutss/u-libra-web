@@ -6,3 +6,4 @@ export const register = (input) => {
 export const login = (input) => {
   return axios.post("auth/login", input);
 };
+export const getMe = () => axios.get("/auth/me");

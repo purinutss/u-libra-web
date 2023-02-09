@@ -1,9 +1,15 @@
-import React from "react";
+import profileImage from "../assets/default_pic.png";
 
-export default function Avatar({ src }) {
+export default function Avatar({ src, size }) {
   return (
-    <div>
-      <img src={src} alt="" className={`rounded-full`} />
+    <div className="self-center">
+      <img
+        src={src || profileImage}
+        className="rounded-full cursor-pointer"
+        atl="user"
+        width={size}
+        height={size}
+      />
     </div>
   );
 }

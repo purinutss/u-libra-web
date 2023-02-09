@@ -1,16 +1,15 @@
 import React from "react";
+import Avatar from "../components/Avatar";
+import useAuth from "../hooks/useAuth";
 
 export default function ProfilePart() {
+  const { authenticatedUser } = useAuth();
   return (
     <>
       <div className="w-[70%]">
         <div className="flex flex-col justify-center">
           <div className="grid justify-center mt-10">
-            <img
-              src="https://picsum.photos/250/250"
-              alt=""
-              className="rounded-full"
-            />
+            <Avatar src={authenticatedUser.profileImage} size={250} />
           </div>
 
           <div className="p-10">
