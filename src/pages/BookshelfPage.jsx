@@ -1,11 +1,10 @@
 import React from "react";
-import BookPart from "../layouts/BookPart";
-import Header from "../layouts/Header";
+import BookContainer from "../layouts/BookContainer";
 
 export default function BookshelfPage() {
   return (
     <div>
-      <BookPart />
+      <BookContainer />
     </div>
   );
 }

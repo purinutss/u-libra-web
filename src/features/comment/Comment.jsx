@@ -10,7 +10,6 @@ export default function Comment() {
       </div>
       <hr className="mx-3" />
       <ShowComment />
-      <ShowComment />
       <InputComment />
     </div>
   );

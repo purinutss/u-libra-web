@@ -1,8 +1,8 @@
 import React from "react";
-import Avatar from "../components/Avatar";
-import LoginContainer from "../features/auth/LoginContainer";
+// import LoginContainer from "../features/auth/LoginContainer";
 import useAuth from "../hooks/useAuth";
 import Brand from "./Brand";
+import CategoryContainer from "./category/CategoryContainer";
 import DropdownProfile from "./DropdownProfile";
 
 export default function Header() {
@@ -20,7 +20,7 @@ export default function Header() {
                 placeholder="Search..."
               />
               <div className="p-2 mr-5">
-                <i className="fa-solid fa-bars fa-xl"></i>
+                <CategoryContainer />
               </div>
               <div className="dropdown" type="button">
                 <DropdownProfile />

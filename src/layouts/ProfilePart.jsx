@@ -1,15 +1,20 @@
 import React from "react";
 import Avatar from "../components/Avatar";
+import MeAction from "../features/profile/MeAction";
 import useAuth from "../hooks/useAuth";
 
 export default function ProfilePart() {
   const { authenticatedUser } = useAuth();
   return (
     <>
-      <div className="w-[70%]">
+      <div className="w-[100%]">
         <div className="flex flex-col justify-center">
           <div className="grid justify-center mt-10">
             <Avatar src={authenticatedUser.profileImage} size={250} />
+          </div>
+
+          <div>
+            <MeAction />
           </div>
 
           <div className="p-10">

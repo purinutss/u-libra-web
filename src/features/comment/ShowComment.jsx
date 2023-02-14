@@ -1,19 +1,18 @@
 import React from "react";
+import Avatar from "../../components/Avatar";
+import useAuth from "../../hooks/useAuth";
 
 export default function ShowComment() {
+  const authenticatedUser = useAuth();
   return (
     <>
       <div className="my-3">
         <div className="flex items-start p-2">
           <div className="items-center mx-4">
-            <img
-              src="https://picsum.photos/80/80"
-              alt="avatar"
-              className="rounded-full"
-            />
+            <Avatar src={authenticatedUser.profileImage} size={50} />
           </div>
           <div className="mr-4">
-            <h1 className="font-bold text-lg">Purinut</h1>
+            <h1 className="font-bold text-lg">{authenticatedUser.firstName}</h1>
             <h1 className="font-extralight text-xs">2m ago</h1>
           </div>
           <div className="w-full mr-4">

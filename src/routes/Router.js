@@ -9,6 +9,7 @@ import RedirectIfAuthenticate from "../features/auth/RedirectIfAuthenticated";
 import ProtectedRoute from "../features/auth/ProtectedRoute";
 import AuthLayout from "../layouts/AuthLayout";
 import HomePage from "../pages/HomePage";
+import BlankPage from "../pages/BlankPage.jsx";
 
 const router = createBrowserRouter([
   {
@@ -50,12 +51,12 @@ const router = createBrowserRouter([
         path: "/profile/:userId",
         element: <ProfilePage />,
       },
+      {
+        path: "/blank",
+        element: <BlankPage />,
+      },
     ],
   },
-  // {
-  //   path: "/blank",
-  //   element: <LoginForm />,
-  // },
 ]);
 
 export default function Router() {

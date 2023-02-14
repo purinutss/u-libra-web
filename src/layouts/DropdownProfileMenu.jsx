@@ -12,7 +12,7 @@ export default function DropdownProfileMenu({ open, onClose }) {
         <div className="flex justify-center">
           <Avatar src={authenticatedUser.profileImage} size={60} />
         </div>
-        <div>
+        <div className="text-center">
           <span className="text-lg font-bold">
             {authenticatedUser.firstName} {authenticatedUser.lastName}
           </span>
