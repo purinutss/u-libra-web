@@ -1,39 +1,48 @@
 import React, { useState } from "react";
+import { useParams } from "react-router-dom";
 import Avatar from "../../components/Avatar";
-import useAuth from "../../hooks/useAuth";
-import * as commentApi from "../../apis/comment-api";
+import axios from "../../config/axios";
 
-export default function InputComment() {
+export default function InputComment({ setShowComment, showComment }) {
   const [title, setTitle] = useState("");
+  const { bookId } = useParams();
 
-  const authenticatedUser = useAuth();
-
-  const handleSubmitForm = async (e) => {
-    e.preventDefault();
-    const formData = new FormData();
-    if (title) {
-      formData.append("title", title);
+  const handleSubmitForm = async (event) => {
+    event.preventDefault();
+    console.log(title);
+    try {
+      const response = await axios.post(`/comment/${bookId}`, {
+        detail: title,
+      });
+      setShowComment([...showComment, response.data.response]);
+      // console.log("sdfsdfsdf ------", response.data.response);
+      // setShowComment((previous) => [...previous, response.data.response]);
+      // Update the comments on the page by calling fetchComments() from the parent component
+    } catch (error) {
+      console.error(error);
     }
-    await commentApi.createComment(formData);
+
     setTitle("");
   };
+
   return (
     <form onSubmit={handleSubmitForm}>
       <div className="flex justify-center items-center my-4">
         <div className="">
-          <Avatar src={authenticatedUser.profileImage} size={50} />
+          <Avatar src="" size={50} />
         </div>
         <div className="mx-3">
           <input
             type="text"
             className="border-2 border-black rounded-3xl w-96"
             placeholder="Comments..."
+            value={title}
             onChange={(e) => setTitle(e.target.value)}
           />
         </div>
         <div className="">
-          <button>
-            <i type="submit" className="fa-2x fa-regular fa-circle-right"></i>
+          <button type="submit">
+            <i className="fa-2x fa-regular fa-circle-right"></i>
           </button>
         </div>
       </div>

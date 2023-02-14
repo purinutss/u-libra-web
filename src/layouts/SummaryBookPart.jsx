@@ -7,7 +7,7 @@ import axios from "../config/axios";
 export default function SummaryBookPart() {
   const [books, setBooks] = useState({});
   const { bookId } = useParams();
-  console.log(bookId);
+  // console.log(bookId);
   const fetchBook = async () => {
     try {
       const response = await axios.get(`/book/get/${bookId}`);
@@ -19,7 +19,7 @@ export default function SummaryBookPart() {
       console.log(err);
     }
   };
-  console.log(books);
+  // console.log(books);
 
   useEffect(() => {
     fetchBook();
