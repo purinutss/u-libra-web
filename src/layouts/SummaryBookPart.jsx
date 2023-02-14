@@ -30,7 +30,11 @@ export default function SummaryBookPart() {
       <div className="flex justify-evenly mx-4 mt-4">
         <div key={books.id} className="flex w-full">
           <div>
-            <img src={books.bookCover} alt="bookCover" />
+            <img
+              src={books.bookCover}
+              alt="bookCover"
+              className="borer-2 border-black"
+            />
           </div>
           <div className="w-full ml-10 ">
             <div className="flex justify-between">
@@ -40,7 +44,7 @@ export default function SummaryBookPart() {
                 </div>
                 <div>
                   <h1 className="text-xs font-bold">
-                    Aasdfsda / Self-Development
+                    {books.University?.name} / {books.Category?.title}
                   </h1>
                 </div>
               </div>
