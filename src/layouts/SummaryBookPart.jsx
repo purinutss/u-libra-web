@@ -30,7 +30,7 @@ export default function SummaryBookPart() {
       <div className="flex justify-evenly mx-4 mt-4">
         <div key={books.id} className="flex w-full">
           <div>
-            <img
+            <im
               src={books.bookCover}
               alt="bookCover"
               className="borer-2 border-black"
@@ -43,7 +43,7 @@ export default function SummaryBookPart() {
                   <h1 className="text-3xl font-extrabold">{books.title}</h1>
                 </div>
                 <div>
-                  <h1 className="text-xs font-bold">
+                  <h1 className="text-sm font-bold">
                     {books.University?.name} / {books.Category?.title}
                   </h1>
                 </div>
