@@ -1,6 +1,25 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import axios from "../config/axios";
 
 export default function ReadBookPart() {
+  const [showChapterContent, setShowChapterContent] = useState({});
+  const { bookId } = useParams();
+
+  const fetchChapterContent = async (chapterId) => {
+    try {
+      const response = await axios.get(`/chapter/get/${bookId}/${chapterId}`);
+      const showChapterContent = response.data.chapterContent;
+      setShowChapterContent(showChapterContent);
+      console.log(showChapterContent);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  useEffect(() => {
+    fetchChapterContent();
+  }, {});
   return (
     <div className="p-7 w-3/4 m-auto border-double border-4 border-black rounded-3xl h-full my-5">
       <div className="flex justify-between">
@@ -22,9 +41,7 @@ export default function ReadBookPart() {
           <h1 className="text-3xl font-extrabold grid justify-center">
             Atomic Habits
           </h1>
-          <h1 className="text-xl font-bold mt-2">
-            Chapter 1 Lorem, ipsum dolor.
-          </h1>
+          <h1 className="text-xl font-bold mt-2">fgsdg</h1>
           <br />
         </div>
       </div>

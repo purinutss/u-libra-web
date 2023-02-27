@@ -13,17 +13,14 @@ export default function ProfilePart() {
             <Avatar src={authenticatedUser.profileImage} size={250} />
           </div>
 
-          <div>
-            <MeAction />
+          <div className="mt-3">
+            <MeAction title="Edit Profile" />
           </div>
 
           <div className="p-10">
             <div>
               <h1 className="font-bold text-xl">Display Name</h1>
-              <input
-                type="text"
-                className="border-black border-2 rounded-3xl mt-2 mb-4 w-full"
-              />
+              <input type="text" className="border-black border-2 rounded-3xl mt-2 mb-4 w-full" />
             </div>
             <div>
               <h1 className="font-bold text-xl">Tell Something</h1>
@@ -34,10 +31,7 @@ export default function ProfilePart() {
             </div>
             <div>
               <h1 className="font-bold text-xl">Facebook URL</h1>
-              <input
-                type="text"
-                className="border-black border-2 rounded-3xl mt-2 mb-4 w-full"
-              />
+              <input type="text" className="border-black border-2 rounded-3xl mt-2 mb-4 w-full" />
             </div>
             <div className="grid justify-end mb-2">
               <button

@@ -4,9 +4,11 @@ import useAuth from "../hooks/useAuth";
 import Brand from "./Brand";
 import CategoryContainer from "./category/CategoryContainer";
 import DropdownProfile from "./DropdownProfile";
+import Button from "../layouts/admin/Button";
+import { Link } from "react-router-dom";
 
 export default function Header() {
-  const authenticatedUser = useAuth();
+  const { authenticatedUser } = useAuth();
   return (
     <>
       <nav>
@@ -19,6 +21,22 @@ export default function Header() {
                 type="text"
                 placeholder="Search..."
               />
+              {authenticatedUser.role === "admin" ? (
+                <div className="flex items-center mr-5">
+                  <Link to="/create-book">
+                    <Button title="Create Book" />
+                  </Link>
+                </div>
+              ) : (
+                ""
+              )}
+              {/* {authenticatedUser.role && authenticatedUser.role === "admin" && (
+                <div className="flex items-center mr-5">
+                  <Link to="/create-book">
+                    <Button title="Create Book" />
+                  </Link>
+                </div>
+              )} */}
               <div className="p-2 mr-5">
                 <CategoryContainer />
               </div>

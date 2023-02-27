@@ -11,7 +11,8 @@ const initialInput = {
   telephone: "",
   email: "",
   password: "",
-  confirmPassword: "",
+  confirmPassword: ""
+  // role: "user"
 };
 export default function RegisterForm({ onClose }) {
   const [input, setInput] = useState(initialInput);
@@ -22,7 +23,7 @@ export default function RegisterForm({ onClose }) {
   const handleChangeInput = (e) => {
     setInput({
       ...input,
-      [e.target.name]: e.target.value,
+      [e.target.name]: e.target.value
     });
   };
 
@@ -110,10 +111,7 @@ export default function RegisterForm({ onClose }) {
                   />
                 </div>
                 <div className="mb-6">
-                  <label
-                    htmlFor="email"
-                    className="block mb-2 text-sm font-medium text-gray-900"
-                  >
+                  <label htmlFor="email" className="block mb-2 text-sm font-medium text-gray-900">
                     Email
                   </label>
                   <Input
@@ -157,6 +155,15 @@ export default function RegisterForm({ onClose }) {
                     error={error.confirmPassword}
                   />
                 </div>
+                {/* <div className="hidden">
+                  <Input
+                    type="text"
+                    name="role"
+                    value={initialInput.role}
+                    // onChange={handleChangeInput}
+                    // error={error.confirmPassword}
+                  />
+                </div> */}
               </div>
             </div>
           </div>

@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function Input({ type, name, value, onChange, error }) {
+export default function Input({ type, name, value, onChange, error, placeholder }) {
   return (
     <>
       <input
@@ -11,6 +11,7 @@ export default function Input({ type, name, value, onChange, error }) {
         name={name}
         value={value}
         onChange={onChange}
+        placeholder={placeholder}
       />
       {error && <div className="invalid-feedback text-red-500">{error}</div>}
     </>

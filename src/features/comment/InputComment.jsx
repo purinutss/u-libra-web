@@ -15,7 +15,7 @@ export default function InputComment({ setShowComment, showComment }) {
     // console.log(title);
     try {
       const response = await axios.post(`/comment/${bookId}`, {
-        detail: title,
+        detail: title
       });
       // console.log(response);
       setShowComment([...showComment, response.data.response]);

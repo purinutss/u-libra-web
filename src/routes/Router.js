@@ -10,6 +10,7 @@ import ProtectedRoute from "../features/auth/ProtectedRoute";
 import AuthLayout from "../layouts/AuthLayout";
 import HomePage from "../pages/HomePage";
 import BlankPage from "../pages/BlankPage.jsx";
+import CreateBookPage from "../pages/admin/CreateBookPage";
 
 const router = createBrowserRouter([
   {
@@ -18,7 +19,7 @@ const router = createBrowserRouter([
       <RedirectIfAuthenticate>
         <LoginPage />
       </RedirectIfAuthenticate>
-    ),
+    )
   },
   {
     element: (
@@ -29,34 +30,38 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <HomePage />,
+        element: <HomePage />
       },
       {
         path: "/category/:catId",
-        element: <CategoryPage />,
+        element: <CategoryPage />
       },
       {
         path: "/bookshelf",
-        element: <BookshelfPage />,
+        element: <BookshelfPage />
       },
       {
         path: "/summary/:bookId",
-        element: <SummaryBookPage />,
+        element: <SummaryBookPage />
       },
       {
         path: "/read/:bookId/:chapterId",
-        element: <ReadingBookPage />,
+        element: <ReadingBookPage />
       },
       {
         path: "/profile/:userId",
-        element: <ProfilePage />,
+        element: <ProfilePage />
+      },
+      {
+        path: "/create-book",
+        element: <CreateBookPage />
       },
       {
         path: "/blank",
-        element: <BlankPage />,
-      },
-    ],
-  },
+        element: <BlankPage />
+      }
+    ]
+  }
 ]);
 
 export default function Router() {
