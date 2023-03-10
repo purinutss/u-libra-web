@@ -1,17 +1,39 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import Input from "../../components/Input";
 import MeAction from "../../features/profile/MeAction";
 import Button from "../../layouts/admin/Button";
 import * as bookApi from "../../apis/book-api";
 
+const initialInput = {
+  title: "",
+  summary: "",
+  categoryId: "",
+  universityId: "",
+  bookCover: null
+};
+
 export default function CreateBookPage() {
-  const [input, setInput] = useState("");
+  const [input, setInput] = useState(initialInput);
+  console.log(input.title);
+  const [bookCover, setBookCover] = useState(null);
+  console.log(bookCover);
+  const inputEl = useRef();
   const handleSubmitForm = async (e) => {
     e.preventDefault();
     try {
-      await bookApi.createBook(input);
+      const formData = new FormData();
+      formData.append("title", input.title);
+      formData.append("summary", input.summary);
+      formData.append("categoryId", input.categoryId);
+      formData.append("universityId", input.universityId);
+      formData.append("bookCover", bookCover);
+      console.log(formData);
+      await bookApi.createBook(formData);
+      setInput(initialInput);
+      setBookCover(null);
     } catch (err) {
       console.log(err?.response?.data?.message);
+    } finally {
     }
   };
   const handleChangeInput = (e) => {
@@ -37,18 +59,20 @@ export default function CreateBookPage() {
                 />
               </div>
               <div className="mb-2">
-                <Input
+                <textarea
                   placeholder="Summary"
                   name="summary"
                   value={input.summary}
+                  className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-3xl focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 resize-y"
                   onChange={handleChangeInput}
+                  // rows={3}
                 />
               </div>
               <div className="mb-2">
                 <Input
                   placeholder="University Id"
                   name="universityId"
-                  value={input.university_id}
+                  value={input.universityId}
                   onChange={handleChangeInput}
                 />
               </div>
@@ -56,7 +80,7 @@ export default function CreateBookPage() {
                 <Input
                   placeholder="Category Id"
                   name="categoryId"
-                  value={input.category_id}
+                  value={input.categoryId}
                   onChange={handleChangeInput}
                 />
               </div>
@@ -64,12 +88,27 @@ export default function CreateBookPage() {
                 <div className="flex justify-center">
                   <img
                     className="h-60 w-40 border-solid border-2 border-black"
-                    src=""
+                    src={bookCover ? URL.createObjectURL(bookCover) : null}
                     alt="book cover"
                   />
                 </div>
-                <div className="self-center my-3">
-                  <MeAction logo="fa-book" title="Book Cover" />
+                <div className="self-center my-3 flex justify-center">
+                  <input
+                    type="file"
+                    ref={inputEl}
+                    className="hidden"
+                    onChange={(e) => {
+                      setBookCover(e.target.files[0]);
+                    }}
+                  />
+                  <button
+                    type="button"
+                    className=" bg-gray-200 p-1.5 rounded-lg"
+                    onClick={() => inputEl.current.click()}
+                  >
+                    <i className="fa-solid fa-book" />
+                    <span className="font-semibold">Book Cover</span>
+                  </button>
                 </div>
               </div>
               <div className="flex justify-center gap-3">
@@ -79,9 +118,9 @@ export default function CreateBookPage() {
                 <div>
                   <Button
                     title="Reset"
-                    type="reset"
+                    // type="reset"
                     className="rounded-xl bg-gray-200 p-1.5 w-32 font-medium text-lg"
-                    onClick={() => setInput("")}
+                    onClick={() => setInput(initialInput)}
                   />
                 </div>
               </div>

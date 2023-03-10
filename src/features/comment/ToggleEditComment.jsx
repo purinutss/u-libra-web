@@ -2,11 +2,7 @@ import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "../../config/axios";
 
-export default function ToggleEditComment({
-  setShowComment,
-  comment,
-  commentId,
-}) {
+export default function ToggleEditComment({ setShowComment, comment, commentId }) {
   console.log(comment);
   const [title, setTitle] = useState(comment);
   //   const { commentId } = useParams();
@@ -14,7 +10,7 @@ export default function ToggleEditComment({
     e.preventDefault();
     try {
       const response = await axios.patch(`/comment/${commentId}`, {
-        detail: title,
+        detail: title
       });
       //   const response = await axios.patch(`/comment/${commentId}`, {
       //     detail: title,

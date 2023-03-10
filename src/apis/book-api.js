@@ -1,3 +1,3 @@
 import axios from "../config/axios";
 
-export const createBook = (input) => axios.createBook("/book/post/create-book", input);
+export const createBook = (formData) => axios.post("/book/post/create-book", formData);

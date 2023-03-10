@@ -1,14 +1,13 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import Avatar from "../components/Avatar";
 import useAuth from "../hooks/useAuth";
 
 export default function DropdownProfileMenu({ open, onClose }) {
   const { logout, authenticatedUser } = useAuth();
-
   return (
     <div className={`dropdown-menu end-0 px-2 ${open ? "d-block" : ""}`}>
-      <Link to="/profile/:userId" className="dropdown-item" onClick={onClose}>
+      <Link to={`/profile/${authenticatedUser.id}`} className="dropdown-item" onClick={onClose}>
         <div className="flex justify-center">
           <Avatar src={authenticatedUser.profileImage} size={60} />
         </div>
