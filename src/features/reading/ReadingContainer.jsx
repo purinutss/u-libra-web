@@ -8,7 +8,7 @@ export default function ReadingContainer() {
     <div>
       <button
         type="button"
-        className=" rounded-xl bg-emerald-200 p-1.5 w-32 font-bold text-xl"
+        className=" rounded-xl bg-emerald-200 p-1.5 w-32 font-bold text-xl hover:bg-emerald-300"
         onClick={() => setOpen(true)}
       >
         Read

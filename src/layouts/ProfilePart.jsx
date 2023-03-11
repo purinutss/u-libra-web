@@ -6,7 +6,7 @@ import { useParams } from "react-router-dom";
 import useLoading from "../hooks/useLoading";
 
 export default function ProfilePart() {
-  const { authenticatedUser } = useAuth();
+  const { authenticatedUser, setAuthenticatedUser } = useAuth();
   const initialEditInput = {
     username: authenticatedUser.username,
     bio: authenticatedUser.bio
@@ -14,10 +14,33 @@ export default function ProfilePart() {
   const [user, setUser] = useState({});
   const [edit, setEdit] = useState(initialEditInput);
   const [image, setImage] = useState(null);
+  const [isEdit, setIsEdit] = useState(false);
   const inputEl = useRef();
   const { userId } = useParams();
 
   const { startLoading, stopLoading } = useLoading();
+
+  // useEffect for get data from api after change and set it to authenticated
+  useEffect(() => {
+    const fetchUser = async () => {
+      try {
+        const response = await userApi.getProfileById(userId);
+        setAuthenticatedUser(response.data.user);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    fetchUser();
+    return () => setIsEdit(false);
+  }, [isEdit]);
+
+  // useEffect for refresh
+  useEffect(() => {
+    setEdit({
+      username: authenticatedUser.username,
+      bio: authenticatedUser.bio
+    });
+  }, [authenticatedUser]);
 
   const handleSubmitForm = async (e) => {
     e.preventDefault();
@@ -31,6 +54,7 @@ export default function ProfilePart() {
     } catch (err) {
       console.log(err?.response?.data?.message);
     } finally {
+      setIsEdit(true);
       stopLoading();
     }
   };
