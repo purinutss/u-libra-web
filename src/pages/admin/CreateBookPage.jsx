@@ -15,7 +15,6 @@ const initialInput = {
 
 export default function CreateBookPage() {
   const [input, setInput] = useState(initialInput);
-  console.log(input.title);
   const [bookCover, setBookCover] = useState(null);
   console.log(bookCover);
   const inputEl = useRef();

@@ -11,7 +11,6 @@ export default function ReadingFormat({ onClose }) {
       const response = await axios.get(`/chapter/get/chapter/${bookId}`);
       const showChapter = response.data.chapters;
       setShowChapter(showChapter);
-      console.log(showChapter);
     } catch (err) {
       console.log(err);
     }

@@ -10,17 +10,12 @@ export default function BookPart() {
       const response = await axios.get("/book");
       const bookCovers = response.data.books;
       setBooks(bookCovers);
-      // console.log(typeof bookCovers);
     } catch (err) {
       console.log(err);
     }
   };
-  // console.log(books);
 
-  const bookSD = books.filter(
-    (books) => books.Category.title === "Self-Development"
-  );
-  console.log(bookSD);
+  const bookSD = books.filter((books) => books.Category.title === "Self-Development");
 
   useEffect(() => {
     fetchBook();

@@ -12,18 +12,15 @@ export default function ShowComment() {
   const { bookId } = useParams();
   const { authenticatedUser } = useAuth();
 
-  console.log(openEdit);
   const fetchComments = async () => {
     try {
       const response = await axios.get(`/comment/${bookId}/comments`);
       const commentShow = response.data.comments;
       setShowComment(commentShow);
-      // console.log(commentShow);
     } catch (err) {
       console.log(err);
     }
   };
-  // console.log("sdfsdfsdfsdfsd", showComment);
 
   const handleDeleteComment = async (commentId) => {
     try {
@@ -57,9 +54,7 @@ export default function ShowComment() {
                   <Avatar src={el.User.profileImage} size={50} />
                 </div>
                 <div className="mr-4 w-60 flex flex-col justify-start">
-                  <h1 className="font-bold text-lg">
-                    {el.User.firstName} {el.User.lastName}
-                  </h1>
+                  <h1 className="font-bold text-lg">{el.User.username}</h1>
                   <h1 className="font-extralight text-xs">2m ago</h1>
                 </div>
                 <div className="w-96 ">

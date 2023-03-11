@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { Link } from "react-router-dom";
 import ReadingContainer from "../features/reading/ReadingContainer";
 import axios from "../config/axios";
 import DeleteBookContainer from "../features/reading/admin/DeleteBookContainer";
@@ -9,19 +8,14 @@ import EditBookContainer from "../features/reading/admin/EditBookContainer";
 export default function SummaryBookPart() {
   const [books, setBooks] = useState({});
   const { bookId } = useParams();
-  // console.log(bookId);
   const fetchBook = async () => {
     try {
       const response = await axios.get(`/book/get/${bookId}`);
-      console.log(response.data.books);
-      // const bookInfo = response.data.books;
       setBooks(response.data.book);
-      // console.log(bookInfo);
     } catch (err) {
       console.log(err);
     }
   };
-  // console.log(books);
 
   useEffect(() => {
     fetchBook();
@@ -54,7 +48,7 @@ export default function SummaryBookPart() {
                   <ReadingContainer />
                 </div>
                 <div className="grid items-center">
-                  <EditBookContainer />
+                  <EditBookContainer books={books} setBooks={setBooks} />
                 </div>
                 <div className="grid items-center">
                   <DeleteBookContainer />

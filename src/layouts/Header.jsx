@@ -27,16 +27,7 @@ export default function Header() {
                     <Button title="Create Book" />
                   </Link>
                 </div>
-              ) : (
-                ""
-              )}
-              {/* {authenticatedUser.role && authenticatedUser.role === "admin" && (
-                <div className="flex items-center mr-5">
-                  <Link to="/create-book">
-                    <Button title="Create Book" />
-                  </Link>
-                </div>
-              )} */}
+              ) : null}
               <div className="p-2 mr-5">
                 <CategoryContainer />
               </div>

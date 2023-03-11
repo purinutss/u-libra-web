@@ -11,7 +11,6 @@ export default function ProfilePart() {
     username: authenticatedUser.username,
     bio: authenticatedUser.bio
   };
-  const [user, setUser] = useState({});
   const [edit, setEdit] = useState(initialEditInput);
   const [image, setImage] = useState(null);
   const [isEdit, setIsEdit] = useState(false);
