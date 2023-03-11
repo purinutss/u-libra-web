@@ -3,6 +3,7 @@ import Input from "../../components/Input";
 import MeAction from "../../features/profile/MeAction";
 import Button from "../../layouts/admin/Button";
 import * as bookApi from "../../apis/book-api";
+import useLoading from "../../hooks/useLoading";
 
 const initialInput = {
   title: "",
@@ -18,8 +19,12 @@ export default function CreateBookPage() {
   const [bookCover, setBookCover] = useState(null);
   console.log(bookCover);
   const inputEl = useRef();
+
+  const { startLoading, stopLoading } = useLoading();
+
   const handleSubmitForm = async (e) => {
     e.preventDefault();
+    startLoading();
     try {
       const formData = new FormData();
       formData.append("title", input.title);
@@ -34,6 +39,7 @@ export default function CreateBookPage() {
     } catch (err) {
       console.log(err?.response?.data?.message);
     } finally {
+      stopLoading();
     }
   };
   const handleChangeInput = (e) => {

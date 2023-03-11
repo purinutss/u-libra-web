@@ -3,6 +3,7 @@ import Avatar from "../components/Avatar";
 import useAuth from "../hooks/useAuth";
 import * as userApi from "../apis/user-api";
 import { useParams } from "react-router-dom";
+import useLoading from "../hooks/useLoading";
 
 export default function ProfilePart() {
   const { authenticatedUser } = useAuth();
@@ -16,8 +17,11 @@ export default function ProfilePart() {
   const inputEl = useRef();
   const { userId } = useParams();
 
+  const { startLoading, stopLoading } = useLoading();
+
   const handleSubmitForm = async (e) => {
     e.preventDefault();
+    startLoading();
     try {
       const formData = new FormData();
       formData.append("profileImage", image);
@@ -26,6 +30,8 @@ export default function ProfilePart() {
       await userApi.editProfile(formData);
     } catch (err) {
       console.log(err?.response?.data?.message);
+    } finally {
+      stopLoading();
     }
   };
 

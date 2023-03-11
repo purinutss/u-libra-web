@@ -1,11 +1,16 @@
+import SyncLoader from "react-spinners/SyncLoader";
+
 export default function Spinner() {
   return (
-    <div
-      className="d-flex flex-column justify-content-center align-items-center gap-3 offcanvas-backdrop show"
-      style={{ zIndex: 1100 }}
-    >
-      <div className="spinner-border text-warning"></div>
-      <span className="text-warning">Please Wait</span>
+    <div className="fixed top-0 left-0 w-full h-full overflow-x-hidden overflow-y-auto bg-[#232323aa] z-50">
+      <div className="flex flex-col">
+        <div className="flex justify-center mt-[45vh]">
+          <SyncLoader color="#36d7b7" cssOverride={{}} loading size={15} speedMultiplier={1} />
+        </div>
+        <div>
+          <span className="flex justify-center text-yellow-300">Please Wait</span>
+        </div>
+      </div>
     </div>
   );
 }

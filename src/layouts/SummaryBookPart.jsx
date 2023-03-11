@@ -47,6 +47,12 @@ export default function SummaryBookPart() {
               <div className="grid items-center">
                 <ReadingContainer />
               </div>
+              <div className="grid items-center">
+                <ReadingContainer />
+              </div>
+              <div className="grid items-center">
+                <ReadingContainer />
+              </div>
             </div>
             <div className=" self-center mt-4">
               <h1 className="self-center font-light text-xs w-10/12">{books.summary}</h1>
