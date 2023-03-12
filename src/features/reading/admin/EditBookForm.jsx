@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 import Input from "../../../components/Input";
 import Button from "../../../layouts/admin/Button";
@@ -6,7 +6,7 @@ import * as bookApi from "../../../apis/book-api";
 import useLoading from "../../../hooks/useLoading";
 import { useParams } from "react-router-dom";
 
-export default function EditBookForm({ books, setBooks, onClose }) {
+export default function EditBookForm({ books, setBooks, onClose, isUpdate }) {
   const [input, setInput] = useState(books);
   const [bookCover, setBookCover] = useState(null);
   const inputEl = useRef();
@@ -27,6 +27,7 @@ export default function EditBookForm({ books, setBooks, onClose }) {
       }
       const editBook = await bookApi.updateBook(bookId, formData);
       setBooks(editBook);
+      isUpdate(true);
     } catch (err) {
       console.log(err?.response?.data?.message);
     } finally {
@@ -40,6 +41,7 @@ export default function EditBookForm({ books, setBooks, onClose }) {
       [e.target.name]: e.target.value
     });
   };
+
   return (
     <>
       <form onSubmit={handleSubmitEditBook}>

@@ -7,6 +7,7 @@ import EditBookContainer from "../features/reading/admin/EditBookContainer";
 
 export default function SummaryBookPart() {
   const [books, setBooks] = useState({});
+  const [isUpdate, setIsUpdate] = useState(false);
   const { bookId } = useParams();
   const fetchBook = async () => {
     try {
@@ -19,7 +20,8 @@ export default function SummaryBookPart() {
 
   useEffect(() => {
     fetchBook();
-  }, []);
+    setIsUpdate(false);
+  }, [isUpdate]);
 
   return (
     <>
@@ -48,7 +50,7 @@ export default function SummaryBookPart() {
                   <ReadingContainer />
                 </div>
                 <div className="grid items-center">
-                  <EditBookContainer books={books} setBooks={setBooks} />
+                  <EditBookContainer books={books} setBooks={setBooks} isUpdate={isUpdate} />
                 </div>
                 <div className="grid items-center">
                   <DeleteBookContainer />
