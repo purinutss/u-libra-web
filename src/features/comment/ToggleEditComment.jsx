@@ -2,7 +2,13 @@ import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "../../config/axios";
 
-export default function ToggleEditComment({ setShowComment, comment, commentId }) {
+export default function ToggleEditComment({
+  setShowComment,
+  comment,
+  commentId,
+  setIsUpdateComment,
+  setOpenEdit
+}) {
   console.log(comment);
   const [title, setTitle] = useState(comment);
   //   const { commentId } = useParams();
@@ -12,11 +18,9 @@ export default function ToggleEditComment({ setShowComment, comment, commentId }
       const response = await axios.patch(`/comment/${commentId}`, {
         detail: title
       });
-      //   const response = await axios.patch(`/comment/${commentId}`, {
-      //     detail: title,
-      //   });
       setShowComment(response.data.response);
-      window.location.reload(false);
+      setIsUpdateComment(true);
+      setOpenEdit(false);
     } catch (err) {
       console.log(err);
     }
@@ -24,12 +28,12 @@ export default function ToggleEditComment({ setShowComment, comment, commentId }
 
   return (
     <form onSubmit={handleEditComment}>
-      <div className="w-[80%] border-2 items-start">
+      <div className="w-[100%] items-start">
         <div className="flex items-center my-4">
-          <div className="mx-3 w-full">
-            <input
+          <div className="mx-3 w-full ">
+            <textarea
               type="text"
-              className="border-2 border-black rounded-3xl w-[100%]"
+              className="border-2 border-black rounded-3xl w-[100%] h-28"
               value={title}
               onChange={(e) => setTitle(e.target.value)}
             />

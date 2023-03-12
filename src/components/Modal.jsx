@@ -7,7 +7,7 @@ export default function Modal({ open, onClose, children }) {
   return (
     <>
       <div
-        className={`modal fade show absolute ${open ? "d-block" : ""}`}
+        className={`modal fade show ${open ? "d-block" : ""}`}
         tabIndex="-1"
         style={loading ? { zIndex: 99 } : {}}
         onMouseDown={onClose}
@@ -17,7 +17,7 @@ export default function Modal({ open, onClose, children }) {
           className="modal-dialog modal-dialog-centered"
           onMouseDown={(e) => e.stopPropagation()}
         >
-          <div className="relative modal-content">
+          <div className=" modal-content">
             <div className="modal-body">{children}</div>
           </div>
         </div>

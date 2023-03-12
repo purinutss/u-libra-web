@@ -17,7 +17,6 @@ export default function SummaryBookPart() {
       const response = await axios.get(`/book/get/${bookId}`);
       setBooks(response.data.book);
       console.log(response.data.book);
-      // setIsUpdate(false);
     } catch (err) {
       console.log(err);
     }
