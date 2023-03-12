@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+
 import axios from "../../config/axios";
 import Avatar from "../../components/Avatar";
-import { useParams } from "react-router-dom";
 import InputComment from "./InputComment";
 import ToggleEditComment from "./ToggleEditComment";
 import useAuth from "../../hooks/useAuth";
 import DeleteCommentContainer from "./DeleteCommentContainer";
+import { timeSince } from "../../utils/DateFormat";
 
 export default function ShowComment() {
   const [showComment, setShowComment] = useState([]);
@@ -58,7 +60,7 @@ export default function ShowComment() {
                 </div>
                 <div className="mr-4 w-[25%] flex flex-col items-start ">
                   <h1 className="font-bold text-lg">{el.User.username}</h1>
-                  <h1 className="font-extralight text-xs">2m ago</h1>
+                  <h1 className="font-extralight text-xs">{timeSince(el.createdAt)}</h1>
                 </div>
                 <div className="w-[60%] ">
                   {openEdit === el.id ? (
