@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import CategoryPage from "../../pages/CategoryPage";
 import * as categoryApi from "../../apis/category-api";
 
-export default function CategoryFormat() {
+export default function CategoryFormat({ onClose }) {
   const [category, setCategory] = useState([]);
 
   useEffect(() => {
@@ -26,7 +26,8 @@ export default function CategoryFormat() {
         return (
           <Link to={`/category/${category.id}`}>
             <div
-              // type="button"
+              type="button"
+              onClick={onClose}
               key={category.id}
               className="w-full rounded-lg border shadow-md  text-center flex justify-center font-semibold gap-3 p-2 my-2 hover:bg-emerald-200"
             >

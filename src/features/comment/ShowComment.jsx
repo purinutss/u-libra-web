@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 import axios from "../../config/axios";
 import Avatar from "../../components/Avatar";
@@ -55,9 +55,11 @@ export default function ShowComment() {
           <>
             <div className="my-3 w-[100%]">
               <div className="flex p-2 ">
-                <div className="items-center ml-4 mr-6">
-                  <Avatar src={el.User.profileImage} size={50} />
-                </div>
+                <Link to="/">
+                  <div className="items-center ml-4 mr-6">
+                    <Avatar src={el.User.profileImage} size={50} />
+                  </div>
+                </Link>
                 <div className="mr-4 w-[25%] flex flex-col items-start ">
                   <h1 className="font-bold text-lg">{el.User.username}</h1>
                   <h1 className="font-extralight text-xs">{timeSince(el.createdAt)}</h1>

@@ -35,7 +35,7 @@ export default function ToggleEditComment({
               type="text"
               className=" rounded-lg w-[100%]"
               value={title}
-              rows={1}
+              rows={2}
               onChange={(e) => setTitle(e.target.value)}
             />
           </div>
