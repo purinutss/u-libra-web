@@ -56,11 +56,11 @@ export default function ShowComment() {
                 <div className="items-center ml-4 mr-6">
                   <Avatar src={el.User.profileImage} size={50} />
                 </div>
-                <div className="mr-4 w-[25%] flex flex-col justify-start">
+                <div className="mr-4 w-[25%] flex flex-col items-start ">
                   <h1 className="font-bold text-lg">{el.User.username}</h1>
                   <h1 className="font-extralight text-xs">2m ago</h1>
                 </div>
-                <div className="w-[65%] ">
+                <div className="w-[60%] ">
                   {openEdit === el.id ? (
                     <ToggleEditComment
                       setShowComment={setShowComment}

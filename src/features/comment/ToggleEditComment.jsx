@@ -29,18 +29,24 @@ export default function ToggleEditComment({
   return (
     <form onSubmit={handleEditComment}>
       <div className="w-[100%] items-start">
-        <div className="flex items-center my-4">
-          <div className="mx-3 w-full ">
+        <div className="flex items-center w-[80%]">
+          <div className="mr-3 w-full ">
             <textarea
               type="text"
-              className="border-2 border-black rounded-3xl w-[100%] h-28"
+              className=" rounded-lg w-[100%]"
               value={title}
+              rows={1}
               onChange={(e) => setTitle(e.target.value)}
             />
           </div>
-          <div className="">
+          <div>
             <button type="submit">
               <i className="fa-2x fa-regular fa-circle-right"></i>
+            </button>
+          </div>
+          <div>
+            <button type="button" onClick={() => setOpenEdit(false)}>
+              <i className="fa-2x fa-regular fa-circle-xmark"></i>
             </button>
           </div>
         </div>
