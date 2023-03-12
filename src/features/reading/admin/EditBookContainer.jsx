@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Modal from "../../../components/Modal";
 import EditBookForm from "./EditBookForm";
 
-export default function EditBookContainer({ books, setBooks, isUpdate }) {
+export default function EditBookContainer({ books, setBooks, setIsUpdate }) {
   const [open, setOpen] = useState();
   return (
     <div>
@@ -18,7 +18,7 @@ export default function EditBookContainer({ books, setBooks, isUpdate }) {
           onClose={() => setOpen(false)}
           books={books}
           setBooks={setBooks}
-          isUpdate={isUpdate}
+          setIsUpdate={setIsUpdate}
         />
       </Modal>
     </div>

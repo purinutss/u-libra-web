@@ -6,7 +6,7 @@ import * as bookApi from "../../../apis/book-api";
 import useLoading from "../../../hooks/useLoading";
 import { useParams } from "react-router-dom";
 
-export default function EditBookForm({ books, setBooks, onClose, isUpdate }) {
+export default function EditBookForm({ books, setBooks, onClose, setIsUpdate }) {
   const [input, setInput] = useState(books);
   const [bookCover, setBookCover] = useState(null);
   const inputEl = useRef();
@@ -27,7 +27,7 @@ export default function EditBookForm({ books, setBooks, onClose, isUpdate }) {
       }
       const editBook = await bookApi.updateBook(bookId, formData);
       setBooks(editBook);
-      isUpdate(true);
+      setIsUpdate(true);
     } catch (err) {
       console.log(err?.response?.data?.message);
     } finally {

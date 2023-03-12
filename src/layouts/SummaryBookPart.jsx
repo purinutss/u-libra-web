@@ -4,8 +4,11 @@ import ReadingContainer from "../features/reading/ReadingContainer";
 import axios from "../config/axios";
 import DeleteBookContainer from "../features/reading/admin/DeleteBookContainer";
 import EditBookContainer from "../features/reading/admin/EditBookContainer";
+import useAuth from "../hooks/useAuth";
 
 export default function SummaryBookPart() {
+  const { authenticatedUser } = useAuth();
+  console.log(authenticatedUser);
   const [books, setBooks] = useState({});
   const [isUpdate, setIsUpdate] = useState(false);
   const { bookId } = useParams();
@@ -13,6 +16,8 @@ export default function SummaryBookPart() {
     try {
       const response = await axios.get(`/book/get/${bookId}`);
       setBooks(response.data.book);
+      console.log(response.data.book);
+      // setIsUpdate(false);
     } catch (err) {
       console.log(err);
     }
@@ -49,12 +54,20 @@ export default function SummaryBookPart() {
                 <div className="grid items-center">
                   <ReadingContainer />
                 </div>
-                <div className="grid items-center">
-                  <EditBookContainer books={books} setBooks={setBooks} isUpdate={isUpdate} />
-                </div>
-                <div className="grid items-center">
-                  <DeleteBookContainer />
-                </div>
+                {authenticatedUser.role === "admin" && (
+                  <>
+                    <div className="grid items-center">
+                      <EditBookContainer
+                        books={books}
+                        setBooks={setBooks}
+                        setIsUpdate={setIsUpdate}
+                      />
+                    </div>
+                    <div className="grid items-center">
+                      <DeleteBookContainer />
+                    </div>
+                  </>
+                )}
               </div>
             </div>
           </div>
