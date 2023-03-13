@@ -1,4 +1,6 @@
 import React, { useRef, useState } from "react";
+import { toast } from "react-toastify";
+
 import Input from "../../components/Input";
 import MeAction from "../../features/profile/MeAction";
 import Button from "../../layouts/admin/Button";
@@ -35,8 +37,9 @@ export default function CreateBookPage() {
       await bookApi.createBook(formData);
       setInput(initialInput);
       setBookCover(null);
+      toast.success("Create book successfully");
     } catch (err) {
-      console.log(err?.response?.data?.message);
+      toast.error(err?.response?.data?.message);
     } finally {
       stopLoading();
     }

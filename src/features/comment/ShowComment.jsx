@@ -15,7 +15,6 @@ export default function ShowComment() {
   const [isUpdateComment, setIsUpdateComment] = useState(false);
   const { bookId } = useParams();
   const { authenticatedUser } = useAuth();
-  console.log(showComment);
 
   const fetchComments = async () => {
     try {

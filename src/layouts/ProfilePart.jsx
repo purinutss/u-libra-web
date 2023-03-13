@@ -86,7 +86,7 @@ export default function ProfilePart() {
               />
               <button
                 type="button"
-                className=" bg-gray-200 p-1.5 rounded-lg"
+                className=" bg-gray-200 p-1.5 rounded-lg hover:bg-gray-300"
                 onClick={() => inputEl.current.click()}
               >
                 <i className="fa-solid fa-pen" />
@@ -130,7 +130,7 @@ export default function ProfilePart() {
               <div className="grid justify-end mb-2">
                 <button
                   type="submit"
-                  className="rounded-xl bg-emerald-200 p-1.5 w-32 font-bold text-2xl"
+                  className="rounded-xl bg-emerald-200 p-1.5 w-32 font-bold text-2xl hover:bg-emerald-300"
                 >
                   Save
                 </button>

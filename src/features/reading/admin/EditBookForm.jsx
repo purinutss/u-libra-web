@@ -102,7 +102,7 @@ export default function EditBookForm({ books, setBooks, onClose, setIsUpdate }) 
                   />
                   <button
                     type="button"
-                    className=" bg-gray-200 p-1.5 rounded-lg"
+                    className=" bg-gray-200 p-1.5 rounded-lg hover:bg-gray-300"
                     onClick={() => inputEl.current.click()}
                   >
                     <i className="fa-solid fa-book" />
@@ -117,8 +117,9 @@ export default function EditBookForm({ books, setBooks, onClose, setIsUpdate }) 
                 <div>
                   <Button
                     title="Cancel"
+                    type="button"
                     // type="reset"
-                    className="rounded-xl bg-gray-200 p-1.5 w-32 font-medium text-lg"
+                    className="rounded-xl bg-gray-200 p-1.5 w-32 font-medium text-lg hover:bg-gray-300"
                     // onClick={() => setInput(initialInput)}
                     onclick={onClose}
                   />

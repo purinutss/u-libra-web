@@ -1,5 +1,6 @@
 import React from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import { toast } from "react-toastify";
 
 import * as bookApi from "../../../apis/book-api";
 
@@ -11,6 +12,7 @@ export default function DeleteBookConfirm({ onClose }) {
     try {
       await bookApi.deleteBook(bookId);
       navigate("/");
+      toast.success("Delete successfully");
     } catch (err) {
       console.log(err);
     }

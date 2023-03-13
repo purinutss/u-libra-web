@@ -11,6 +11,7 @@ import AuthLayout from "../layouts/AuthLayout";
 import HomePage from "../pages/HomePage";
 import BlankPage from "../pages/BlankPage.jsx";
 import CreateBookPage from "../pages/admin/CreateBookPage";
+import ProtectedRouteAdmin from "../features/auth/ProtectedRouteAdmin";
 
 const router = createBrowserRouter([
   {
@@ -54,7 +55,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/create-book",
-        element: <CreateBookPage />
+        element: (
+          <ProtectedRouteAdmin>
+            <CreateBookPage />
+          </ProtectedRouteAdmin>
+        )
       },
       {
         path: "/blank",

@@ -8,7 +8,6 @@ import useAuth from "../hooks/useAuth";
 
 export default function SummaryBookPart() {
   const { authenticatedUser } = useAuth();
-  console.log(authenticatedUser);
   const [books, setBooks] = useState({});
   const [isUpdate, setIsUpdate] = useState(false);
   const { bookId } = useParams();
@@ -16,7 +15,6 @@ export default function SummaryBookPart() {
     try {
       const response = await axios.get(`/book/get/${bookId}`);
       setBooks(response.data.book);
-      console.log(response.data.book);
     } catch (err) {
       console.log(err);
     }
@@ -31,7 +29,7 @@ export default function SummaryBookPart() {
     <>
       <div className="flex justify-evenly mx-4 mt-4">
         <div key={books.id} className="flex w-full">
-          <div>
+          <div className="border-2 border-black">
             <img src={books.bookCover} alt="bookCover" className="borer-2 border-black" />
           </div>
           <div className="w-full ml-10 ">
