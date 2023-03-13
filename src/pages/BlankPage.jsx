@@ -1,37 +1,20 @@
-import React from "react";
+// import React from "react";
+// import { Swiper, SwiperSlide } from "swiper/react";
+// import "swiper.min.css";
 
-export default function BlankPage() {
-  return (
-    <>
-      <button
-        class="btn btn-primary"
-        type="button"
-        data-bs-toggle="offcanvas"
-        data-bs-target="#offcanvasRight"
-        aria-controls="offcanvasRight"
-      >
-        Toggle right offcanvas
-      </button>
+// export default function BlankPage() {
+//   return;
 
-      <div
-        class="offcanvas offcanvas-end"
-        tabindex="-1"
-        id="offcanvasRight"
-        aria-labelledby="offcanvasRightLabel"
-      >
-        <div class="offcanvas-header">
-          <h5 class="offcanvas-title" id="offcanvasRightLabel">
-            Offcanvas right
-          </h5>
-          <button
-            type="button"
-            class="btn-close"
-            data-bs-dismiss="offcanvas"
-            aria-label="Close"
-          ></button>
-        </div>
-        <div class="offcanvas-body">...</div>
-      </div>
-    </>
-  );
-}
+//   <Swiper
+//     spaceBetween={50}
+//     slidesPerView={3}
+//     onSlideChange={() => console.log("slide change")}
+//     onSwiper={(swiper) => console.log(swiper)}
+//   >
+//     <SwiperSlide>Slide 1</SwiperSlide>
+//     <SwiperSlide>Slide 2</SwiperSlide>
+//     <SwiperSlide>Slide 3</SwiperSlide>
+//     <SwiperSlide>Slide 4</SwiperSlide>
+//     ...
+//   </Swiper>;
+// }

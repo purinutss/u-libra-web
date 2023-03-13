@@ -12,6 +12,7 @@ export default function ProfilePart() {
     bio: authenticatedUser.bio
   };
   const [edit, setEdit] = useState(initialEditInput);
+  const [user, setUser] = useState({});
   const [image, setImage] = useState(null);
   const [isEdit, setIsEdit] = useState(false);
   const inputEl = useRef();
@@ -24,7 +25,8 @@ export default function ProfilePart() {
     const fetchUser = async () => {
       try {
         const response = await userApi.getProfileById(userId);
-        setAuthenticatedUser(response.data.user);
+        // setAuthenticatedUser(response.data.user);
+        setUser(response.data.user);
       } catch (err) {
         console.log(err);
       }
@@ -113,6 +115,18 @@ export default function ProfilePart() {
                   onChange={handleChangeProfile}
                 />
               </div>
+              {/* {authenticatedUser.id === user.id ? (
+                <div className="grid justify-end mb-2">
+                  <button
+                    type="submit"
+                    className="rounded-xl bg-emerald-200 p-1.5 w-32 font-bold text-2xl"
+                  >
+                    Save
+                  </button>
+                </div>
+              ) : (
+                ""
+              )} */}
               <div className="grid justify-end mb-2">
                 <button
                   type="submit"
