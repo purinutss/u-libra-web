@@ -25,11 +25,7 @@ export default function BookPart() {
       <div>
         <div>
           <div className="asdfsadf">
-            <Link to="/category/:catId">
-              <h1 className=" fit-content text-left font-bold text-2xl p-10 hover:text-blue-800 hover:underline cursor-pointer">
-                New Arrivals
-              </h1>
-            </Link>
+            <h1 className=" fit-content text-left font-bold text-2xl p-10">New Arrivals</h1>
           </div>
           <div className="gap-4 mx-5 flex flex-wrap">
             {books?.map((el) => {
@@ -52,9 +48,7 @@ export default function BookPart() {
 
         <div>
           <div className="">
-            <h1 className="fit-content text-left font-bold text-2xl p-10 hover:text-blue-800 hover:underline cursor-pointer">
-              Self-Development
-            </h1>
+            <h1 className="fit-content text-left font-bold text-2xl p-10">Self-Development</h1>
           </div>
           <div className="gap-4 mx-5 flex flex-wrap">
             {bookSD?.map((el) => {
