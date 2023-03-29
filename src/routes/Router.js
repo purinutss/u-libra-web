@@ -3,6 +3,7 @@ import CategoryPage from "../pages/CategoryPage";
 import BookshelfPage from "../pages/BookshelfPage";
 import SummaryBookPage from "../pages/SummaryBookPage";
 import ProfilePage from "../pages/ProfilePage";
+import ShowProfilePage from "../pages/ShowProfilePage";
 import ReadingBookPage from "../pages/ReadingBookPage";
 import LoginPage from "../pages/LoginPage";
 import RedirectIfAuthenticate from "../features/auth/RedirectIfAuthenticated";
@@ -52,6 +53,10 @@ const router = createBrowserRouter([
       {
         path: "/profile/:userId",
         element: <ProfilePage />
+      },
+      {
+        path: "/show/profile/:userId",
+        element: <ShowProfilePage />
       },
       {
         path: "/create-book",

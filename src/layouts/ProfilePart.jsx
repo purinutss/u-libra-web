@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import Avatar from "../components/Avatar";
 import useAuth from "../hooks/useAuth";
 import * as userApi from "../apis/user-api";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import useLoading from "../hooks/useLoading";
 
 export default function ProfilePart() {
@@ -12,11 +12,11 @@ export default function ProfilePart() {
     bio: authenticatedUser.bio
   };
   const [edit, setEdit] = useState(initialEditInput);
-  const [user, setUser] = useState({});
   const [image, setImage] = useState(null);
   const [isEdit, setIsEdit] = useState(false);
-  const inputEl = useRef();
   const { userId } = useParams();
+  const navigate = useNavigate();
+  const inputEl = useRef();
 
   const { startLoading, stopLoading } = useLoading();
 
@@ -25,8 +25,7 @@ export default function ProfilePart() {
     const fetchUser = async () => {
       try {
         const response = await userApi.getProfileById(userId);
-        // setAuthenticatedUser(response.data.user);
-        setUser(response.data.user);
+        setAuthenticatedUser(response.data.user);
       } catch (err) {
         console.log(err);
       }
@@ -57,6 +56,7 @@ export default function ProfilePart() {
     } finally {
       setIsEdit(true);
       stopLoading();
+      navigate(-1);
     }
   };
 
@@ -99,7 +99,7 @@ export default function ProfilePart() {
                 <h1 className="font-bold text-xl">Display Name</h1>
                 <input
                   type="text"
-                  className="border-black border-2 rounded-3xl mt-2 mb-4 w-full"
+                  className="border-black border-2 rounded-xl mt-2 mb-4 w-full"
                   name="username"
                   value={edit.username}
                   onChange={handleChangeProfile}
@@ -109,7 +109,7 @@ export default function ProfilePart() {
                 <h1 className="font-bold text-xl">Tell Something</h1>
                 <textarea
                   type="text"
-                  className="border-black border-2 rounded-3xl mt-2 mb-4 w-full h-36"
+                  className="border-black border-2 rounded-xl mt-2 mb-4 w-full h-36"
                   name="bio"
                   value={edit.bio}
                   onChange={handleChangeProfile}

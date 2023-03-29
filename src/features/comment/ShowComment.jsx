@@ -15,6 +15,8 @@ export default function ShowComment() {
   const [isUpdateComment, setIsUpdateComment] = useState(false);
   const { bookId } = useParams();
   const { authenticatedUser } = useAuth();
+  console.log("auth", authenticatedUser);
+  console.log("showComment", showComment);
 
   const fetchComments = async () => {
     try {
@@ -56,7 +58,13 @@ export default function ShowComment() {
             <div className="flex flex-col items-center ">
               <div className="w-[90%] border-b border-gray-300">
                 <div className="flex p-3 ">
-                  <Link to={`/profile/${el.User.id}`}>
+                  <Link
+                    to={
+                      authenticatedUser.id === el.User.id
+                        ? `/profile/${el.User.id}`
+                        : `/show/profile/${el.User.id}`
+                    }
+                  >
                     <div className="items-center ml-4 mr-6">
                       <Avatar src={el.User.profileImage} size={50} />
                     </div>
@@ -79,7 +87,7 @@ export default function ShowComment() {
                     )}
                   </div>
                   {authenticatedUser.id === el.User.id ? (
-                    <div className="flex w-[15px]">
+                    <div className="flex items-center w-[15px]">
                       <div>
                         <i
                           type="button"
