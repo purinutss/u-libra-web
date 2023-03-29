@@ -11,7 +11,10 @@ export default function DeleteCommentConfirm({ onClick, onClose }) {
           <button
             type="button"
             className=" rounded-xl bg-gray-200 p-1.5 w-32 font-bold text-xl hover:bg-gray-300"
-            onClick={onClick}
+            onClick={() => {
+              onClick();
+              onClose();
+            }}
           >
             Yes
           </button>
