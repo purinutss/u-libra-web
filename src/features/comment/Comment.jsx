@@ -1,16 +1,15 @@
 import React from "react";
-import InputComment from "./InputComment";
 import ShowComment from "./ShowComment";
 
 export default function Comment() {
   return (
     <div className="my-4">
-      <div className="mb-2">
-        <h1 className="text-center text-3xl font-bold">Comment</h1>
+      <div className="flex justify-center">
+        <div className="mb-2 border-b-2 w-[90%]">
+          <h1 className="text-center text-3xl font-bold mb-3">Comments</h1>
+        </div>
       </div>
-      <hr className="mx-3" />
       <ShowComment />
-      {/* <InputComment /> */}
     </div>
   );
 }

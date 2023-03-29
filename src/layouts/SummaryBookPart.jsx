@@ -23,7 +23,7 @@ export default function SummaryBookPart() {
   useEffect(() => {
     fetchBook();
     setIsUpdate(false);
-  }, [isUpdate]);
+  }, [isUpdate, bookId]);
 
   return (
     <>

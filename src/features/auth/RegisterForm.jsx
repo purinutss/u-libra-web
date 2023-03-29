@@ -30,7 +30,6 @@ export default function RegisterForm({ onClose }) {
   const handleSubmitForm = async (e) => {
     try {
       e.preventDefault();
-      console.log(input);
       const result = validateRegister(input);
 
       if (result) {

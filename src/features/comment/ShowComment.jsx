@@ -46,60 +46,60 @@ export default function ShowComment() {
   useEffect(() => {
     fetchComments();
     setIsUpdateComment(false);
-  }, [isUpdateComment]);
+  }, [isUpdateComment, bookId]);
 
   return (
     <>
       {showComment?.map((el) => {
         return (
           <>
-            <div className="my-3 w-[100%]">
-              <div className="flex p-2 ">
-                <Link to={`/profile/${el.User.id}`}>
-                  <div className="items-center ml-4 mr-6">
-                    <Avatar src={el.User.profileImage} size={50} />
+            <div className="flex flex-col items-center ">
+              <div className="w-[90%] border-b border-gray-300">
+                <div className="flex p-3 ">
+                  <Link to={`/profile/${el.User.id}`}>
+                    <div className="items-center ml-4 mr-6">
+                      <Avatar src={el.User.profileImage} size={50} />
+                    </div>
+                  </Link>
+                  <div className="mr-4 w-[25%] flex flex-col items-start ">
+                    <h1 className="font-bold text-lg">{el.User.username || el.User.firstName}</h1>
+                    <h1 className="font-extralight text-xs">{timeSince(el.createdAt)}</h1>
                   </div>
-                </Link>
-                <div className="mr-4 w-[25%] flex flex-col items-start ">
-                  <h1 className="font-bold text-lg">{el.User.username}</h1>
-                  <h1 className="font-extralight text-xs">{timeSince(el.createdAt)}</h1>
-                </div>
-                <div className="w-[60%] ">
-                  {openEdit === el.id ? (
-                    <ToggleEditComment
-                      setShowComment={setShowComment}
-                      comment={el.detail}
-                      commentId={el.id}
-                      setIsUpdateComment={setIsUpdateComment}
-                      setOpenEdit={setOpenEdit}
-                    />
+                  <div className="w-[60%] ">
+                    {openEdit === el.id ? (
+                      <ToggleEditComment
+                        setShowComment={setShowComment}
+                        comment={el.detail}
+                        commentId={el.id}
+                        setIsUpdateComment={setIsUpdateComment}
+                        setOpenEdit={setOpenEdit}
+                      />
+                    ) : (
+                      <h1>{el.detail}</h1>
+                    )}
+                  </div>
+                  {authenticatedUser.id === el.User.id ? (
+                    <div className="flex w-[15px]">
+                      <div>
+                        <i
+                          type="button"
+                          className="fa-lg fa-solid fa-pencil mr-2"
+                          onClick={() => handleClickEdit(el.id)}
+                        ></i>
+                      </div>
+                      <div>
+                        <DeleteCommentContainer onClick={() => handleDeleteComment(el.id)} />
+                      </div>
+                    </div>
                   ) : (
-                    <h1>{el.detail}</h1>
+                    ""
                   )}
                 </div>
-                {authenticatedUser.id === el.User.id ? (
-                  <div className="flex justify-center w-[15px]">
-                    <div className="">
-                      <i
-                        type="button"
-                        className="fa-lg fa-solid fa-pencil mr-2"
-                        onClick={() => handleClickEdit(el.id)}
-                      ></i>
-                    </div>
-                    <div>
-                      <DeleteCommentContainer onClick={() => handleDeleteComment(el.id)} />
-                    </div>
-                  </div>
-                ) : (
-                  ""
-                )}
               </div>
             </div>
-            <hr className="mx-3" />
           </>
         );
       })}
-      {/* {openEdit ? <ToggleEditComment /> : ""} */}
       <InputComment setShowComment={setShowComment} showComment={showComment} />
     </>
   );

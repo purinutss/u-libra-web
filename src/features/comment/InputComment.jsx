@@ -12,15 +12,11 @@ export default function InputComment({ setShowComment, showComment }) {
 
   const handleSubmitForm = async (event) => {
     event.preventDefault();
-    // console.log(title);
     try {
       const response = await axios.post(`/comment/${bookId}`, {
         detail: title
       });
-      // console.log(response);
       setShowComment([...showComment, response.data.response]);
-      // console.log("sdfsdfsdf ------", response.data.response);
-      // setShowComment((previous) => [...previous, response.data.response]);
       // Update the comments on the page by calling fetchComments() from the parent component
     } catch (error) {
       console.error(error);

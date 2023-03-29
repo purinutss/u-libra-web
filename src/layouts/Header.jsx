@@ -6,23 +6,38 @@ import Brand from "./Brand";
 import CategoryContainer from "./category/CategoryContainer";
 import DropdownProfile from "./DropdownProfile";
 import Button from "../layouts/admin/Button";
-import * as bookApi from "../apis/book-api";
+import axios from "../config/axios";
 
 export default function Header() {
-  const [bookTitle, setBookTitle] = useState([]);
+  const [bookData, setBookData] = useState([]);
+  const [titlesFilter, setTitlesFilter] = useState("");
+  const [isSearchResultOpen, setIsSearchResultOpen] = useState(true);
 
   useEffect(() => {
     const fetchBookTitle = async () => {
       try {
-        const response = await bookApi.getAllBooks();
-        console.log("---------------->response header", response);
-        // setBookTitle()
+        const response = await axios.get(`/book/get/book/title?bookTitle=${titlesFilter}`);
+        const allBookTitles = response.data.bookTitles;
+        setBookData(allBookTitles);
       } catch (err) {
         console.log(err);
       }
-      fetchBookTitle();
     };
-  }, []);
+    const idTimeout = setTimeout(() => {
+      titlesFilter !== "" && fetchBookTitle();
+    }, 500);
+    return () => clearTimeout(idTimeout);
+  }, [titlesFilter]);
+
+  const handleChangeInput = (e) => {
+    setTitlesFilter(e.target.value);
+    setIsSearchResultOpen(true);
+  };
+
+  const handleSearchResult = (e) => {
+    setTitlesFilter("");
+    setIsSearchResultOpen(false);
+  };
 
   const { authenticatedUser } = useAuth();
   return (
@@ -33,11 +48,31 @@ export default function Header() {
             <Brand />
             <div className="flex items-center">
               <div>
-                <input
-                  className="w-72 mr-5 bg-slate-100 rounded-xl p-1 placeholder-slate-400"
-                  type="text"
-                  placeholder="Search..."
-                />
+                <div>
+                  <input
+                    className="w-72 mr-5 bg-slate-100 rounded-xl p-1 placeholder-slate-400"
+                    type="text"
+                    placeholder="Search..."
+                    onChange={handleChangeInput}
+                    value={titlesFilter}
+                  />
+                </div>
+                <div className="absolute">
+                  {titlesFilter !== "" && bookData.length !== 0 && isSearchResultOpen && (
+                    <div className="mt-2">
+                      {bookData.map((book) => (
+                        <Link to={`/summary/${book.id}`}>
+                          <div
+                            className="w-72 mr-5 border bg-gray-50 border-gray-200 p-1 hover:bg-emerald-100 rounded-sm"
+                            onClick={handleSearchResult}
+                          >
+                            {book.title}
+                          </div>
+                        </Link>
+                      ))}
+                    </div>
+                  )}
+                </div>
               </div>
               {authenticatedUser.role === "admin" ? (
                 <div className="flex items-center mr-5">

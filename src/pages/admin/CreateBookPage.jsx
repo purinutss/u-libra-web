@@ -18,7 +18,6 @@ const initialInput = {
 export default function CreateBookPage() {
   const [input, setInput] = useState(initialInput);
   const [bookCover, setBookCover] = useState(null);
-  console.log(bookCover);
   const inputEl = useRef();
 
   const { startLoading, stopLoading } = useLoading();
@@ -33,7 +32,6 @@ export default function CreateBookPage() {
       formData.append("categoryId", input.categoryId);
       formData.append("universityId", input.universityId);
       formData.append("bookCover", bookCover);
-      console.log(formData);
       await bookApi.createBook(formData);
       setInput(initialInput);
       setBookCover(null);

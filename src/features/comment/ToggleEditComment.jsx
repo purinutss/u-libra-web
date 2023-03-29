@@ -8,7 +8,6 @@ export default function ToggleEditComment({
   setIsUpdateComment,
   setOpenEdit
 }) {
-  console.log(comment);
   const [title, setTitle] = useState(comment);
   //   const { commentId } = useParams();
   const handleEditComment = async (e) => {
