@@ -12,9 +12,7 @@ export default function DropdownProfileMenu({ open, onClose }) {
           <Avatar src={authenticatedUser.profileImage} size={60} />
         </div>
         <div className="text-center">
-          <span className="text-lg font-bold">
-            {authenticatedUser.firstName} {authenticatedUser.lastName}
-          </span>
+          <span className="text-lg font-bold">{authenticatedUser.username}</span>
         </div>
       </Link>
       <hr className="dropdown-divider" />

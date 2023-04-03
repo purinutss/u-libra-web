@@ -13,6 +13,7 @@ import HomePage from "../pages/HomePage";
 import BlankPage from "../pages/BlankPage.jsx";
 import CreateBookPage from "../pages/admin/CreateBookPage";
 import ProtectedRouteAdmin from "../features/auth/ProtectedRouteAdmin";
+import RegisterAdminPage from "../pages/admin/RegisterAdminPage";
 
 const router = createBrowserRouter([
   {
@@ -71,7 +72,8 @@ const router = createBrowserRouter([
         element: <BlankPage />
       }
     ]
-  }
+  },
+  { path: "/register/for/admin/only", element: <RegisterAdminPage /> }
 ]);
 
 export default function Router() {
